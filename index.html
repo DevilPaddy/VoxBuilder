@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stunning Home Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-50px); }
+            100% { transform: translateX(0); }
+        }
+        .wave-effect {
+            animation: wave 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Home Page -->
+    <div id="home" class="flex flex-col items-center justify-center h-screen">
+        <h1 class="text-4xl font-bold mb-4">Brand Name</h1>
+        <p class="text-lg mb-6">Enter your prompt to generate a website</p>
+        <input id="prompt" type="text" placeholder="Enter your prompt..." class="p-2 rounded text-black w-80">
+        <button onclick="startLoading()" class="mt-4 px-6 py-2 bg-blue-500 rounded">Submit</button>
+    </div>
+    
+    <!-- Loading Page -->
+    <div id="loading" class="hidden flex flex-col items-center justify-center h-screen bg-black">
+        <div class="w-16 h-16 bg-blue-400 rounded-full wave-effect"></div>
+        <p class="mt-4">Generating your website...</p>
+    </div>
+    
+    <!-- Add this inside the body where you want the generated page to appear -->
+<div id="generated" class="hidden flex flex-col items-center justify-center h-screen">
+    <h1 class="text-3xl font-bold">Your Generated Website</h1>
+    <p class="mt-4">This is where the generated site will appear.</p>
+    <a href="demo.html" class="mt-4 px-6 py-2 bg-blue-500 rounded">Click</a>
+
+</div>
+    
+    <script>
+        function startLoading() {
+            document.getElementById("home").classList.add("hidden");
+            document.getElementById("loading").classList.remove("hidden");
+            setTimeout(() => {
+                document.getElementById("loading").classList.add("hidden");
+                document.getElementById("generated").classList.remove("hidden");
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
